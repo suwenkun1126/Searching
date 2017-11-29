@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/bulma-0.6.1/css/bulma.css">
+    <title>Searching</title>
+</head>
+<body>
+
+<div style="margin-top: 250px">
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            {% if form.errors %}
+                <div class="notification is-danger">
+                    <button class="delete"></button>
+                    {% for field_name,field_errors in form.errors|dictsort %}
+                        {% for error in field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="has-text-centered">
+                <img src="../static/index.png">
+                <form action="" method="post">
+                    {{ form.hidden_tag() }}
+                    <p class="control">
+                        {{ form.keywords(class="input is-large",placeholder="请输入演员或电影名称") }}
+                    </p>
+                    <div style="margin-top: 20px">
+                        {{ form.search(class="button is-dark is-large") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
