@@ -4,8 +4,9 @@ from wtforms import StringField,SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-app = Flask(__name__)
+app=Flask(__name__)
 app.secret_key='hard to guess string'
+app.debug=Falseg
 
 class SearchForm(FlaskForm):
     keywords=StringField('电影关键词',validators=[DataRequired('电影关键词不能为空')])
@@ -24,4 +25,4 @@ def index():
     return render_template('index.html',form=form)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
